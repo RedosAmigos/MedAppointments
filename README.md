@@ -21,7 +21,7 @@ Une application web développée avec ASP.NET Core MVC permettant la gestion de 
 | **Approbation Admin**        | L’administrateur peut **approuver** ou **rejeter** un rendez-vous en attente |
 | **Limite de rendez-vous**    | Chaque utilisateur peut avoir **au maximum 3 rendez-vous actifs**            |
 | **Navigation dynamique**     | Affichage du menu adapté selon le **rôle de l’utilisateur connecté**         |
-| **Authentification à 2FA**   | Activation de la **double authentification** via application mobile (TOTP)   |
+| **Authentification à 2FA**   | Activation 2FA via app d’authentification (Microsoft / Google)               |
 
 ### 📚 Technologies
 
