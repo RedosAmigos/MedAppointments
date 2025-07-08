@@ -50,7 +50,7 @@ Lancer le projet :
 dotnet run
 ```
 Accès :
-Naviguer sur https://localhost:port/
+- Naviguer sur https://localhost:port/
 
 ### 🚫 Contraintes métiers intégrées
 
