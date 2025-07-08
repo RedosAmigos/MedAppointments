@@ -1,0 +1,49 @@
+## Ignore Visual Studio temporary files, build results, and folders ##
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# Visual Studio folders
+.vs/
+
+# Rider (JetBrains) files
+.idea/
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Other cache files
+*.log
+*.tlog
+*.cache
+*.dbmdl
+
+# Publish folders
+publish/
+*.Publish.xml
+
+# ASP.NET
+*.db
+*.db-shm
+*.db-wal
+
+# Windows image acquisition database files
+*.iobj
+*.ipdb
+
+# User-specific files
+*.userprefs
+*.csproj.user
+
+# Others
+TestResults/

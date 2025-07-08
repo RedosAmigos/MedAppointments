@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Acceuil";
+}
+
+<div class="d-flex flex-column text-center justify-content-center align-items-center" style="height: 80vh;">
+    <h1 class="display-4">Bienvenue sur la plateforme médicale</h1>
+    <p class="lead">Prenez rendez-vous avec un professionnel de santé en quelques clics.</p>
+</div>

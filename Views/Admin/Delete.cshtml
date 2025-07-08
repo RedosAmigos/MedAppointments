@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Supprimer un utilisateur";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<div>
+    <p>Ce compte a <strong>@ViewBag.AppointmentCount rendez-vous enregistrés</strong> qui seront également supprimés.</p>
+    <p>
+        Souhaitez-vous vraiment supprimer le compte :
+        <strong>@Model.FirstName @Model.LastName</strong> ?
+    </p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="userId" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+</form>

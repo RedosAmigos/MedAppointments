@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MedAppointments.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var user = await UserManager.GetUserAsync(User);
+
+        <li class="nav-item">
+            <a class="btn btn-outline-secondary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                Bonjour @user.FirstName!
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+                <button type="submit" class="btn btn-outline-secondary ms-2">Se déconnecter</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-secondary" asp-area="Identity" asp-page="/Account/Register">S’inscrire</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-secondary ms-2" asp-area="Identity" asp-page="/Account/Login">Se connecter</a>
+        </li>
+    }
+</ul>

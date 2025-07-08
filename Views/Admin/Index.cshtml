@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MedAppointments.Models.UserRolesViewModel>
+@{
+    ViewData["Title"] = "Gestion des utilisateurs";
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<table class="table">
+    <tr>
+        <th>Nom complet</th>
+        <th>Email</th>
+        <th>Rôles</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName @user.LastName</td>
+            <td>@user.Email</td>
+            <td>@string.Join(", ", user.Roles)</td>
+            <td>
+                <a asp-action="Manage" asp-route-userId="@user.UserId" class="btn btn-sm btn-primary">Gérer les rôles</a>
+                <a asp-action="Delete" asp-route-userId="@user.UserId" class="btn btn-sm btn-danger">Supprimer</a>
+            </td>
+        </tr>
+    }
+</table>

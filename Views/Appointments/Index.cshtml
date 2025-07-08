@@ -1,0 +1,113 @@
+﻿@using MedAppointments.Models
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<Appointment>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@{
+    ViewData["Title"] = User.IsInRole("Admin")
+        ? "Gestion des rendez-vous"
+        : "Liste des rendez-vous";
+
+    bool isAdmin = ViewBag.IsAdmin ?? false;
+    int activeAppointments = ViewBag.ActiveAppointmentCount ?? 0;
+    int maxAppointments = ViewBag.MaxAppointments ?? 3;
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+@if (TempData["Error"] is string errMsg)
+{
+    <div class="alert alert-danger">@errMsg</div>
+}
+
+@if (!isAdmin)
+{
+    if (activeAppointments < maxAppointments)
+    {
+        <a asp-action="Create" class="btn btn-primary mb-3">Prendre rendez-vous</a>
+    }
+    else
+    {
+        <div class="alert alert-info mb-3">
+            Vous avez atteint la limite de @maxAppointments rendez-vous actifs.
+        </div>
+    }
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-secondary">
+        Aucun rendez-vous pour le moment.
+    </div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom du patient</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PatientName</td>
+                    <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Time.ToString(@"hh\:mm")</td>
+                    <td>
+                        @switch (item.Status)
+                        {
+                            case AppointmentStatus.Pending:
+                                <span class="badge bg-warning text-dark">En attente</span>
+                                break;
+                            case AppointmentStatus.Approved:
+                                <span class="badge bg-success">Approuvé</span>
+                                break;
+                            case AppointmentStatus.Rejected:
+                                <span class="badge bg-danger">Rejeté</span>
+                                break;
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details"
+                           asp-route-id="@item.Id"
+                           class="btn btn-info btn-sm">Détails</a>
+
+                        @if (isAdmin)
+                        {
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">Modifier</a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">Supprimer</a>
+
+                            @if (item.Status == AppointmentStatus.Pending)
+                            {
+                                <form asp-action="Approve" asp-route-id="@item.Id"
+                                      method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-success btn-sm">Approuver</button>
+                                </form>
+                                <form asp-action="Reject" asp-route-id="@item.Id"
+                                      method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-sm">Rejeter</button>
+                                </form>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
