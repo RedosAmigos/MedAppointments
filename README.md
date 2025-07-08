@@ -14,56 +14,41 @@ Une application web développée avec ASP.NET Core MVC permettant la gestion de 
 
 ### 🚀 Fonctionnalités principales
 
-Fonction
-
-Description
-
-Gestion des utilisateurs
-
-Séparation entre rôles Admin et Utilisateur
-
-Prise de rendez-vous
-
-Formulaire pour choisir une date et une heure future
-
-Approbation Admin
-
-Admin peut approuver ou rejeter un rendez-vous en attente
-
-Limite de rendez-vous
-
-Chaque utilisateur peut avoir au max. 3 rendez-vous actifs
-
-Navigation dynamique
-
-Affichage adapté selon le rôle connecté
-
-Authentification à 2 facteurs
-
-Activation 2FA via app d’authentification (Microsoft / Google)
+| **Fonction**                 | **Description**                                                              |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| **Gestion des utilisateurs** | Séparation entre rôles **Admin** et **Utilisateur**                          |
+| **Prise de rendez-vous**     | Formulaire pour choisir une date et une heure **future**                     |
+| **Approbation Admin**        | L’administrateur peut **approuver** ou **rejeter** un rendez-vous en attente |
+| **Limite de rendez-vous**    | Chaque utilisateur peut avoir **au maximum 3 rendez-vous actifs**            |
+| **Navigation dynamique**     | Affichage du menu adapté selon le **rôle de l’utilisateur connecté**         |
+| **Authentification à 2FA**   | Activation de la **double authentification** via application mobile (TOTP)   |
 
 ### 📚 Technologies
 
-- ASP.NET Core MVC (.NET 6+)
+- ASP.NET Core MVC (.NET 8+)
 - Entity Framework Core + SQL Server LocalDB
 - Identity (gestion d’utilisateurs/rôles)
 - Bootstrap 5
 - Razor Pages pour la gestion du compte
 
-### ⚖️ Installation locale
+### ⚙️ Installation locale
 
 Cloner le projet :
-
-git clone https://github.com/votre-utilisateur/medappointments.git
-
+```bash
+git clone https://github.com/RedosAmigos/medappointments.git
+```
 Configurer la base de données :
-
+```bash
+# CLI
 dotnet ef database update
 
+# Package Manager Console
+Update-Database
+```
 Lancer le projet :
-
+```bash
 dotnet run
-
+```
 Accès :
 Naviguer sur https://localhost:port/
 
