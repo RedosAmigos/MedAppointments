@@ -1,4 +1,4 @@
-## Plateforme de rendez-vous médicaux
+# Plateforme de rendez-vous médicaux
 
 Une application web développée avec ASP.NET Core MVC permettant la gestion de rendez-vous entre patients et administrateurs de santé. Cette plateforme est conçue pour offrir une expérience fluide, sécurisée et efficace dans la prise et la validation de rendez-vous.
 
